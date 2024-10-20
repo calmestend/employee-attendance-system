@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Classroom;
+use App\Models\Course;
 use App\Models\Role;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -22,6 +23,8 @@ class DatabaseSeeder extends Seeder
         Role::create(['name' => 'Admin']);
 
         Classroom::create(['name' => 'T221']);
+
+        Course::create(['name' => 'AWOS']);
 
         User::factory()->create([
             'name' => 'Student',
