@@ -20,6 +20,11 @@
                         :active="request()->routeIs('admin.classroom.create')">
                         {{ __('Classrooms') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('admin.course.create')"
+                        :active="request()->routeIs('admin.course.create')">
+                        {{ __('Course') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -86,6 +91,11 @@
             <x-responsive-nav-link :href="route('admin.classroom.create')"
                 :active="request()->routeIs('admin.classroom.create')">
                 {{ __('Classrooms') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('admin.course.create')"
+                :active="request()->routeIs('admin.course.create')">
+                {{ __('Course') }}
             </x-responsive-nav-link>
         </div>
 
