@@ -18,7 +18,7 @@
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-blue-100 dark:bg-gray-900">
-        @include('layouts.navigation')
+        @include('layouts.student-navigation')
 
         <!-- Page Heading -->
         @isset($header)

@@ -44,6 +44,6 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        return redirect(route('dashboard', absolute: false)); // #TODO Change the route to the admin dashboard
+        return redirect()->route('admin.dashboard');
     }
 }
