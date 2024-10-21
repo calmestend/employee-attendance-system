@@ -6,6 +6,7 @@ use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\RegisteredAdminController;
 use App\Http\Controllers\RegisteredStudentController;
+use App\Http\Controllers\RegisteredTeacherController;
 
 Route::middleware(['auth', 'verified', 'role:3'])->group(function () {
     Route::get('/admin', function () { return view('admin.dashboard');})->name('admin.dashboard');
@@ -23,4 +24,7 @@ Route::middleware(['auth', 'verified', 'role:3'])->group(function () {
 
     Route::post('/admin/users/create-student', [RegisteredStudentController::class, 'create'])->name('admin.users.create-student');
     Route::post('/admin/users/register-student', [RegisteredStudentController::class, 'store'])->name('admin.users.store-student');
+
+    Route::post('/admin/users/create-teacher', [RegisteredTeacherController::class, 'create'])->name('admin.users.create-teacher');
+    Route::post('/admin/users/register-teacher', [RegisteredTeacherController::class, 'store'])->name('admin.users.store-teacher');
 });
