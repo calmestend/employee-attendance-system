@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AttendanceRecord;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 
 class AttendanceRecordController extends Controller
@@ -19,7 +21,7 @@ class AttendanceRecordController extends Controller
      */
     public function create()
     {
-        return view('teacher.attendance_report');
+        return view('teacher.attendance_record.create');
     }
 
     /**
@@ -27,15 +29,41 @@ class AttendanceRecordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $attendances = $request->input('attendance');
+        $scheduleIds = $request->input('schedule_ids');
+        $date = $request->input('date');
+
+        foreach ($attendances as $scheduleId => $studentsAttendance) {
+            foreach ($studentsAttendance as $studentId => $status) {
+                AttendanceRecord::create([
+                    'student_id' => $studentId,
+                    'schedule_id' => $scheduleId,
+                    'status' => $status,
+                    'date' => $date,
+                ]);
+            }
+        }
+        return redirect()->route('teacher.attendance_record');
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
-        //
+        $date = $request->input('date');
+        $dayOfWeek = date('l', strtotime($date));
+
+        $teacher = auth()->user()->teacher;
+
+        $schedules = Schedule::where('day_of_week', $dayOfWeek)
+                             ->where('teacher_id', $teacher->id)
+                             ->with('classroom.students.user')
+                             ->get();
+
+        return view('teacher.attendance_record.show', compact('schedules', 'date'));
     }
 
     /**

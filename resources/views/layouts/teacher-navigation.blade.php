@@ -18,7 +18,8 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('teacher.dashboard')" :active="request()->routeIs('teacher.dashboard')">
+                    <x-nav-link :href="route('teacher.attendance_record')"
+                        :active="request()->routeIs('teacher.attendance_record')">
                         {{ __('Attendance') }}
                     </x-nav-link>
                 </div>
