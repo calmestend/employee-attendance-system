@@ -82,7 +82,7 @@
                             dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md
                             shadow-sm'>
                             @foreach ($teachers as $teacher)
-                            <option value="{{ $teacher->id }}">{{ $teacher->user->namnamlite }}</option>
+                            <option value="{{ $teacher->id }}">{{ $teacher->user->name }}</option>
                             @endforeach
                         </select>
                     </div>
