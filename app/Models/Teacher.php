@@ -15,4 +15,10 @@ class Teacher extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class, 'course_id'); // Se asocia con la tabla courses a través de course_id
+    }
 }

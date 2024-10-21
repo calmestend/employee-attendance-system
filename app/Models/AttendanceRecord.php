@@ -12,4 +12,14 @@ class AttendanceRecord extends Model
         'date',
         'status',
     ];
+
+    public function schedule()
+    {
+        return $this->belongsTo(Schedule::class);
+    }
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }

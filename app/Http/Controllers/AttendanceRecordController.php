@@ -27,6 +27,18 @@ class AttendanceRecordController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    public function history()
+    {
+        $teacher = auth()->user()->teacher;
+
+        $schedules = Schedule::where('teacher_id', $teacher->id)
+            ->with('classroom.students.attendanceRecords')
+            ->get();
+
+        return view('teacher.attendance_history', compact('schedules'));
+    }
+
+
     public function store(Request $request)
     {
 
