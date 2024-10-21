@@ -50,6 +50,9 @@
 
                         <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                     </div>
+
+                    <!-- Classroom -->
+
                     <div class="mt-4">
                         <x-input-label for="classroom_id" :value="__('Course')" />
                         <select name="course_id" class='border-gray-300

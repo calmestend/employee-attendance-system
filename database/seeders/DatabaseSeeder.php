@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
 use App\Models\Classroom;
 use App\Models\Course;
 use App\Models\Role;
+use App\Models\Student;
+use App\Models\Teacher;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -45,6 +48,20 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@example.com',
             'password' => bcrypt('admin@example.com'),
             'role_id' => 3
+        ]);
+
+        Student::create([
+            'user_id' => 1,
+            'classroom_id' => 1,
+        ]);
+
+        Teacher::create([
+            'user_id' => 2,
+            'course_id' => 1,
+        ]);
+
+        Admin::create([
+            'user_id' => 3,
         ]);
     }
 }

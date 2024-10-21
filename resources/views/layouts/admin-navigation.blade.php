@@ -26,6 +26,11 @@
                         {{ __('Course') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('admin.schedule.create')"
+                        :active="request()->routeIs('admin.schedule.create')">
+                        {{ __('Schedule') }}
+                    </x-nav-link>
+
                     <x-nav-link :href="route('admin.users.create')" :active="request()->routeIs('admin.users.create')">
                         {{ __('Users') }}
                     </x-nav-link>
