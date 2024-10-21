@@ -24,7 +24,7 @@
                             {{ __('Create Teacher') }}
                         </x-primary-button>
                     </form>
-                    <form method="POST" action="{{ route('admin.users.create-admin') }}">
+                    <form method="POST" action="{{ route('admin.users.create-student') }}">
                         @csrf
                         <x-primary-button class="ms-4">
                             {{ __('Create Student') }}

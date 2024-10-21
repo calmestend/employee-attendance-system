@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\RegisteredAdminController;
+use App\Http\Controllers\RegisteredStudentController;
 
 Route::middleware(['auth', 'verified', 'role:3'])->group(function () {
     Route::get('/admin', function () { return view('admin.dashboard');})->name('admin.dashboard');
@@ -17,6 +18,9 @@ Route::middleware(['auth', 'verified', 'role:3'])->group(function () {
 
     Route::get('/admin/users', [RegisteredUserController::class, 'create'])->name('admin.users.create');
 
-    Route::post('/admin/users/create', [RegisteredAdminController::class, 'create'])->name('admin.users.create-admin');
+    Route::post('/admin/users/create-admin', [RegisteredAdminController::class, 'create'])->name('admin.users.create-admin');
     Route::post('/admin/users/register-admin', [RegisteredAdminController::class, 'store'])->name('admin.users.store-admin');
+
+    Route::post('/admin/users/create-student', [RegisteredStudentController::class, 'create'])->name('admin.users.create-student');
+    Route::post('/admin/users/register-student', [RegisteredStudentController::class, 'store'])->name('admin.users.store-student');
 });
