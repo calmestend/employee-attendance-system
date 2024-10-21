@@ -35,6 +35,16 @@ class ScheduleController extends Controller
         return view('admin.schedule.create', compact('classrooms', 'courses', 'teachers'));
     }
 
+    public function show(Request $request)
+    {
+        $date = $request->input('date');
+        $dayOfWeek = date('l', strtotime($date));
+
+        $schedules = Schedule::where('day_of_week', $dayOfWeek)->get();
+
+        return view('admin.schedule.show', compact('schedules', 'date'));
+    }
+
     /**
      * Store a newly created resource in storage.
      */

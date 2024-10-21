@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceRecordController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClassroomController;
@@ -34,4 +35,6 @@ Route::middleware(['auth', 'verified', 'role:3'])->group(function () {
     Route::get('/admin/schedule', [ScheduleController::class, 'create'])->name('admin.schedule.create');
     Route::post('/admin/schedule/register', [ScheduleController::class, 'store'])->name('admin.schedule.store');
     Route::post('/admin/schedule', [ScheduleController::class, 'index'])->name('admin.schedule.index');
+    Route::get('/admin/schedule/show', [ScheduleController::class, 'show'])->name('admin.schedule.show');
+
 });
