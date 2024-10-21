@@ -6,7 +6,6 @@ use App\Models\Classroom;
 use App\Models\Course;
 use App\Models\Schedule;
 use App\Models\Teacher;
-use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -14,8 +13,20 @@ use Illuminate\View\View;
 class ScheduleController extends Controller
 {
     /**
-    * Display the registration view.
-    */
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $schedules = Schedule::with(['classroom', 'teacher', 'course'])
+        ->orderBy('classroom_id')
+        ->get();
+
+        return view('admin.schedule.index', compact('schedules'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create(): View
     {
         $classrooms = Classroom::all();
@@ -25,9 +36,7 @@ class ScheduleController extends Controller
     }
 
     /**
-     * Handle an incoming registration request.
-     *
-     * @throws \Illuminate\Validation\ValidationException
+     * Store a newly created resource in storage.
      */
     public function store(Request $request): RedirectResponse
     {
