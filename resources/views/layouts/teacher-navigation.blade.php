@@ -23,6 +23,13 @@
                         {{ __('Attendance') }}
                     </x-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('teacher.attendance_history')"
+                        :active="request()->routeIs('teacher.attendance_history')">
+                        {{ __('Attendance History') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
